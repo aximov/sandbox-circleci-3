@@ -3,7 +3,7 @@ jobs:
   build:
     branches:
       only:
-        - master
+        - master-2019
     docker:
       - image: circleci/node:8.9.4
 
@@ -17,11 +17,11 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: npm install
+      - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      - run: npm test
+      - run: yarn test
